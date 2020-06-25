@@ -1,8 +1,9 @@
-// @TODO: YOUR CODE HERE!
+// Define SVG area dimensions
 var svgWidth = 960;
 var svgHeight = 620;
 
 
+// Define the chart's margins as an object
 var margin = {
   top: 20, 
   right: 40, 
@@ -10,21 +11,22 @@ var margin = {
   left: 100
 };
 
-
+// Define dimensions of the chart area
 var width = svgWidth - margin.right - margin.left;
 var height = svgHeight - margin.top - margin.bottom;
 
-
+// select the id "scatter" and append SVG area to it 
 var chart = d3.select('#scatter')
   .append('div')
   .classed('chart', true);
 
-
+// now set the dimensions
 var svg = chart.append('svg')
   .attr('width', svgWidth)
   .attr('height', svgHeight);
 
 
+// Append a group to the SVG area and shift ('translate') it to the left and to the top
 var chartGroup = svg.append('g')
   .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
@@ -32,7 +34,7 @@ var chartGroup = svg.append('g')
 var chosenXAxis = 'poverty';
 var chosenYAxis = 'healthcare';
 
-
+// Configure a  scale for the horizontal axis
 function xScale(censusData, chosenXAxis) {
     //scales
     var xLinearScale = d3.scaleLinear()
@@ -43,6 +45,8 @@ function xScale(censusData, chosenXAxis) {
     return xLinearScale;
 }
 
+
+// Create a linear scale for the vertical axis.
 function yScale(censusData, chosenYAxis) {
   //scales
   var yLinearScale = d3.scaleLinear()
@@ -52,6 +56,8 @@ function yScale(censusData, chosenYAxis) {
 
   return yLinearScale;
 }
+
+
 //a function for updating the xAxis upon click
 function renderXAxis(newXScale, xAxis) {
   var bottomAxis = d3.axisBottom(newXScale);
@@ -95,6 +101,7 @@ function renderText(textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 
     return textGroup
 }
+
 
 function styleX(value, chosenXAxis) {
 
