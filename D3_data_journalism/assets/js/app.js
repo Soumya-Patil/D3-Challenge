@@ -30,7 +30,7 @@ var svg = chart.append('svg')
 var chartGroup = svg.append('g')
   .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-
+// Define the axeses to make choices
 var chosenXAxis = 'poverty';
 var chosenYAxis = 'healthcare';
 
@@ -103,6 +103,7 @@ function renderText(textGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 }
 
 
+// function to render chosen X values
 function styleX(value, chosenXAxis) {
 
     
@@ -134,6 +135,8 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     else {
       var xLabel = 'Age:';
     }
+
+
 //Y label
   //healthcare
   if (chosenYAxis ==='healthcare') {
@@ -163,6 +166,8 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
     return circlesGroup;
 }
+
+
 //retrieve data
 d3.csv('./assets/data/data.csv').then(function(censusData) {
 
@@ -329,6 +334,7 @@ d3.csv('./assets/data/data.csv').then(function(censusData) {
           }
         }
       });
+      
     //y axis 
     yLabelsGroup.selectAll('text')
       .on('click', function() {
